@@ -48,16 +48,6 @@ public class UserServiceImplTest {
 
     }
 
-    @Test
-    public void when_saveRole_should_return_role() {
-        Role role = new Role(null, "ROLE_USER");
-        when(roleRepository.save(any(Role.class))).thenReturn(role);
-
-        Role createdRole = roleRepository.save(role);
-
-        assertThat(createdRole.getName()).isSameAs(role.getName());
-        assertThat(createdRole.getId()).isSameAs(createdRole.getId());
-    }
 
 
 }
