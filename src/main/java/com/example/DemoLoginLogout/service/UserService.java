@@ -1,6 +1,5 @@
 package com.example.DemoLoginLogout.service;
 
-import com.example.DemoLoginLogout.model.Role;
 import com.example.DemoLoginLogout.model.AppUser;
 
 import java.util.List;
@@ -8,7 +7,6 @@ import java.util.List;
 public interface UserService {
 
     AppUser saveUser(AppUser user);
-    Role saveRole(Role role);
     void addRoleToUser(String username, String roleName);
     AppUser getUser(String username);
     List<AppUser> getUsers();

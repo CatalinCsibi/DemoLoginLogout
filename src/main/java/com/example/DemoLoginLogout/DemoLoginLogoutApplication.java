@@ -2,6 +2,7 @@ package com.example.DemoLoginLogout;
 
 import com.example.DemoLoginLogout.model.AppUser;
 import com.example.DemoLoginLogout.model.Role;
+import com.example.DemoLoginLogout.service.RoleService;
 import com.example.DemoLoginLogout.service.UserService;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -25,10 +26,12 @@ public class DemoLoginLogoutApplication {
 	}
 
 	@Bean
-	CommandLineRunner run(UserService userService) {
+	CommandLineRunner run(UserService userService, RoleService roleService) {
 		return args -> {
-			userService.saveRole(new Role(null, "ROLE_USER"));
-			userService.saveRole(new Role(null, "ROLE_ADMIN"));
+			roleService.saveRole(new Role(null, "ROLE_USER"));
+			roleService.saveRole(new Role(null, "ROLE_ADMIN"));
+			roleService.saveRole(new Role(null, "ROLE_MANAGER"));
+
 
 
 

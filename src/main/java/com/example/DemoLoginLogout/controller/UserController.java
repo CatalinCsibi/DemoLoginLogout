@@ -6,6 +6,7 @@ import com.auth0.jwt.algorithms.Algorithm;
 import com.auth0.jwt.interfaces.DecodedJWT;
 import com.example.DemoLoginLogout.model.AppUser;
 import com.example.DemoLoginLogout.model.Role;
+import com.example.DemoLoginLogout.service.RoleService;
 import com.example.DemoLoginLogout.service.UserService;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.Data;
@@ -35,6 +36,8 @@ public class UserController {
 
     private final UserService userService;
 
+    private final RoleService roleService;
+
     @GetMapping("/getAllUsers")
     public ResponseEntity<List<AppUser>> getUsers() {
         return ResponseEntity.ok().body(userService.getUsers());
@@ -51,13 +54,18 @@ public class UserController {
     public ResponseEntity<Role> saveRole(@RequestBody Role role) {
         URI uri = URI.create(ServletUriComponentsBuilder
                 .fromCurrentContextPath().path("/user/saveRole").toUriString());
-        return ResponseEntity.created(uri).body(userService.saveRole(role));
+        return ResponseEntity.created(uri).body(roleService.saveRole(role));
     }
 
     @PostMapping("/addRoleToUser")
     public ResponseEntity<?> addRoleToUser(@RequestBody RoleToUserForm form) {
         userService.addRoleToUser(form.getUsername(), form.getRoleName());
         return ResponseEntity.ok().build();
+    }
+
+    @GetMapping("/getAllRoles")
+    public ResponseEntity<List<Role>> getRoles() {
+        return ResponseEntity.ok().body(roleService.getRoles());
     }
 
     @GetMapping("/token/refreshToken")

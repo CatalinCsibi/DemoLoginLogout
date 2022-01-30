@@ -1,0 +1,250 @@
+{
+	"info": {
+		"_postman_id": "bdb90ede-c035-4c68-b779-7bfa525479b7",
+		"name": "Requests Collection",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Admin Login",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "username",
+							"value": "James90",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "password",
+							"type": "text"
+						}
+					],
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/api/login",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "User Login",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "{bearer}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "username",
+							"value": "george90",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "password",
+							"type": "text"
+						}
+					],
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/api/login",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "User GetAllUsers Request",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJnZW9yZ2U5MCIsInJvbGVzIjpbIlJPTEVfVVNFUiJdLCJpc3MiOiIvYXBpL2xvZ2luIiwiZXhwIjoxNjQzNTgwNTA3fQ.XEgPkOzDP9wnnLW0aFPQXeHGQRZufY4CU5s4VvbJFSo",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "localhost:8080/api/user/getAllUsers",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"user",
+						"getAllUsers"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Admin saveUser Request",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJKYW1lczkwIiwicm9sZXMiOlsiUk9MRV9BRE1JTiJdLCJpc3MiOiIvYXBpL2xvZ2luIiwiZXhwIjoxNjQzNTc5MTc0fQ.vsT2uDnfw76LzI8JeKgS_aJwv1UmK15fMTR5R3ep_kA",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "  {\r\n        \"id\": 96,\r\n        \"firstName\": \"Calin\",\r\n        \"lastName\": \"Calinescu\",\r\n        \"username\": \"calin23\",\r\n        \"password\": \"password\",\r\n        \"roles\": [\r\n            {\r\n                \"id\": 1,\r\n                \"name\": \"ROLE_USER\"\r\n            }\r\n        ]\r\n    }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/api/user/saveUser",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"user",
+						"saveUser"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Admint addRoleToUser Request",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJKYW1lczkwIiwicm9sZXMiOlsiUk9MRV9BRE1JTiJdLCJpc3MiOiIvYXBpL2xvZ2luIiwiZXhwIjoxNjQzNTgwNTIzfQ.jvDBpv6d3Z8SxAjYMj2xes4112XxYm3gn9sr9Dyrhy8",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"username\": \"george90\",\r\n    \"roleName\": \"ROLE_MANAGER\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/api/user/addRoleToUser",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"user",
+						"addRoleToUser"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Admin getAllRolesRequest",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJKYW1lczkwIiwicm9sZXMiOlsiUk9MRV9BRE1JTiJdLCJpc3MiOiIvYXBpL2xvZ2luIiwiZXhwIjoxNjQzNTgyNDY5fQ.PeWIPSnMMQYdw07a2xdXJZxEy28EosqgrRsCvuZALeo",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "localhost:8080/api/user/getAllRoles",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"user",
+						"getAllRoles"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Admin saveRole Request",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJKYW1lczkwIiwicm9sZXMiOlsiUk9MRV9BRE1JTiJdLCJpc3MiOiIvYXBpL2xvZ2luIiwiZXhwIjoxNjQzNTgyNDY5fQ.PeWIPSnMMQYdw07a2xdXJZxEy28EosqgrRsCvuZALeo",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"id\": 4,\r\n    \"name\": \"ROLE_SUPER_ADMIN\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/api/user/saveRole",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"user",
+						"saveRole"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
