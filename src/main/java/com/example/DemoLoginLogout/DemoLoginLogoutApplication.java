@@ -29,8 +29,6 @@ public class DemoLoginLogoutApplication {
 		return args -> {
 			userService.saveRole(new Role(null, "ROLE_USER"));
 			userService.saveRole(new Role(null, "ROLE_ADMIN"));
-			userService.saveRole(new Role(null, "ROLE_SUPER_ADMIN"));
-			userService.saveRole(new Role(null, "ROLE_MANAGER"));
 
 
 
