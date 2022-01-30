@@ -1,15 +1,15 @@
 package com.example.DemoLoginLogout.service;
 
 import com.example.DemoLoginLogout.model.Role;
-import com.example.DemoLoginLogout.model.User;
+import com.example.DemoLoginLogout.model.AppUser;
 
 import java.util.List;
 
 public interface UserService {
 
-    User saveUser(User user);
+    AppUser saveUser(AppUser user);
     Role saveRole(Role role);
     void addRoleToUser(String username, String roleName);
-    User getUser(String username);
-    List<User> getUsers();
+    AppUser getUser(String username);
+    List<AppUser> getUsers();
 }
