@@ -37,10 +37,10 @@ public class DemoLoginLogoutApplication {
 					"Georgescu", "george90", "password", new ArrayList<>()));
 
 			userService.saveUser(new AppUser(null, "James",
-					"Hetfield", "James90", "password1", new ArrayList<>()));
+					"Hetfield", "James90", "password", new ArrayList<>()));
 
 			userService.saveUser(new AppUser(null, "Bruce",
-					"Springsteen", "Bruce90", "password2", new ArrayList<>()));
+					"Springsteen", "Bruce90", "password", new ArrayList<>()));
 
 			userService.addRoleToUser("george90", "ROLE_USER");
 			userService.addRoleToUser("James90", "ROLE_ADMIN");
