@@ -1,6 +1,7 @@
 package com.example.DemoLoginLogout.security;
 
 import com.example.DemoLoginLogout.filter.CustomAuthenticationFilter;
+import com.example.DemoLoginLogout.filter.CustomAuthorizationFilter;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -11,6 +12,10 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
+
+import static org.springframework.http.HttpMethod.GET;
+import static org.springframework.http.HttpMethod.POST;
 
 @Configuration
 @RequiredArgsConstructor
@@ -28,12 +33,24 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
 
+        CustomAuthenticationFilter customAuthenticationFilter =
+                new CustomAuthenticationFilter(authenticationManagerBean());
+        customAuthenticationFilter.setFilterProcessesUrl("/api/login");
+
         http.csrf().disable()
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
                 .and()
-                .authorizeRequests().anyRequest().permitAll()
+                .authorizeRequests()
+                .antMatchers("/api/login/**", "/api/token/refreshToken/**").permitAll()
+                .antMatchers(GET, "api/user/getAllUsers/**").hasAuthority("ROLE_USER")
+                .antMatchers(POST, "api/user/saveUser/**").hasAuthority("ROLE_ADMIN")
                 .and()
-                .addFilter(new CustomAuthenticationFilter(authenticationManagerBean()));
+                .authorizeRequests()
+                .anyRequest()
+                .authenticated()
+                .and()
+                .addFilter(customAuthenticationFilter)
+                .addFilterBefore(new CustomAuthorizationFilter(), UsernamePasswordAuthenticationFilter.class);
 
     }
 
