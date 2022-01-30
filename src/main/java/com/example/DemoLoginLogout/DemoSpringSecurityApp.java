@@ -14,10 +14,10 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import java.util.ArrayList;
 
 @SpringBootApplication
-public class DemoLoginLogoutApplication {
+public class DemoSpringSecurityApp {
 
 	public static void main(String[] args) {
-		SpringApplication.run(DemoLoginLogoutApplication.class, args);
+		SpringApplication.run(DemoSpringSecurityApp.class, args);
 	}
 
 	@Bean
