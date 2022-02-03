@@ -1,6 +1,6 @@
-Simple Login application with Spring Security
+Simple Spring Security demo application.
 
-Demo Login application with:
+Demo Spring Security application with:
 Two Entities AppUser and Role.
 Two Repositories UserRepository and RoleRepository. 
 Two services, UserService and RoleService.
